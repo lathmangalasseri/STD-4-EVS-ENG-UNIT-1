@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>India My Country - STD 4 EVS Unit 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+:root{--primary:#00BCD4;--secondary:#FF4081;--accent:#FFC107;--blue:#03A9F4;--purple:#9C27B0;--teal:#009688;--shadow:0 8px 20px rgba(0,0,0,.15);--radius:20px}
+*{box-sizing:border-box;user-select:none;-webkit-user-select:none;margin:0;padding:0}
+body{background:linear-gradient(180deg,#E1F5FE 0%,#FFF8E1 40%,#fff 70%);min-height:100vh;overflow-x:hidden;color:#263238;font-family:'Inter', sans-serif}
+h1,h2,h3{font-family:'Inter', sans-serif;font-weight:700}
+.ml{font-family:'Anek Malayalam',sans-serif;font-weight:600}
+#app{position:relative;z-index:1;max-width:1050px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;padding:15px}
+
+header{background:rgba(255,255,255,.97);padding:12px 20px;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;flex-wrap:wrap;gap:10px}
+.logo-area{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-area h1{font-size:1.35rem;color:var(--primary);font-weight:800}
+.logo-area .sub{font-size:.9rem;color:#00838F;font-weight:600}
+.logo-area span{font-size:.8rem;background:var(--accent);color:#333;padding:3px 10px;border-radius:12px;font-weight:bold}
+.stats-bar{display:flex;align-items:center;gap:15px;background:#FFF9C4;padding:8px 16px;border-radius:30px;border:2px solid #FBC02D;font-weight:bold;font-size:1.05rem}
+.stat-item{display:flex;align-items:center;gap:5px}
+.controls{display:flex;gap:8px}
+.icon-btn{background:#fff;border:2px solid #E0E0E0;width:40px;height:40px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:1.1rem;cursor:pointer;box-shadow:0 3px 6px rgba(0,0,0,.1)}
+.icon-btn:hover{transform:scale(1.1)}
+.progress-container{width:100%;background:rgba(255,255,255,.6);height:10px;border-radius:10px;overflow:hidden;margin-bottom:15px;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,#00BCD4,#4DD0E1);transition:width .4s ease}
+
+.screen{display:none;flex-direction:column;align-items:center;width:100%;flex:1;animation:fadeIn .3s ease-in-out}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.home-card{background:rgba(255,255,255,.95);border-radius:25px;padding:30px 20px;text-align:center;box-shadow:var(--shadow);width:100%;max-width:800px;margin:auto;border:4px solid #fff}
+.main-title{color:#0097A7;font-size:2rem;margin-bottom:6px}
+.sub-title{color:#E65100;font-size:1.2rem;margin-bottom:8px;font-weight:700}
+.quote-box {background: #FFF3E0; border-left: 5px solid #FF9800; padding: 12px 15px; margin: 15px auto; max-width: 600px; font-style: italic; color: #E65100; border-radius: 8px; font-weight:600;}
+
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;width:100%}
+.btn-menu{padding:16px 18px;border:none;border-radius:20px;font-size:1.1rem;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 6px 0 rgba(0,0,0,.2);text-shadow:1px 1px 2px rgba(0,0,0,.3);transition:all .2s;font-family:'Inter', sans-serif}
+.btn-menu:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+.b1{background:linear-gradient(135deg,#00BCD4,#0097A7)}.b2{background:linear-gradient(135deg,#FF4081,#F50057)}
+.b3{background:linear-gradient(135deg,#2196F3,#1E88E5)}.b4{background:linear-gradient(135deg,#9C27B0,#8E24AA)}
+.b5{background:linear-gradient(135deg,#009688,#00897B)}.b6{background:linear-gradient(135deg,#FF9800,#FB8C00)}
+.b7{background:linear-gradient(135deg,#795548,#6D4C41)}.b8{background:linear-gradient(135deg,#607D8B,#546E7A)}
+.b9{background:linear-gradient(135deg,#3F51B5,#3949AB)}.b10{background:linear-gradient(135deg,#EC407A,#D81B60)}
+.b18{background:linear-gradient(135deg,#26A69A,#00897B)}
+
+.lesson-pick{background:#fff;border:3px solid #80DEEA;border-radius:18px;padding:18px 22px;margin-bottom:14px;cursor:pointer;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:all .2s;width:100%;max-width:520px;margin-left:auto;margin-right:auto;}
+.lesson-pick:hover{border-color:#00BCD4;background:#E0F7FA;transform:translateY(-3px)}
+.lesson-pick .lp-emoji{font-size:2.4rem}
+.lesson-pick .lp-title{font-size:1.3rem;font-weight:800;color:#00838F;font-family:'Inter', sans-serif}
+.lesson-pick .lp-sub{font-size:1rem;color:#546E7A;font-weight:600}
+.section-header{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;background:#fff;padding:12px 20px;border-radius:15px;box-shadow:var(--shadow);flex-wrap:wrap;gap:10px}
+.section-title{font-size:1.3rem;color:var(--primary);font-weight:800;display:flex;align-items:center;gap:8px;font-family:'Inter', sans-serif}
+.back-btn{background:linear-gradient(135deg,#607D8B,#546E7A);color:#fff;border:none;padding:8px 20px;border-radius:20px;font-weight:bold;cursor:pointer;font-family:'Inter', sans-serif;font-size:1rem}
+
+.content-box{background:rgba(255,255,255,.97);border-radius:22px;padding:24px;box-shadow:var(--shadow);width:100%;max-width:850px;margin:0 auto 20px;border:3px solid #fff}
+.story-title-wrap{text-align:center;width:100%;margin-bottom:18px}
+.story-title{text-align:center;font-size:1.5rem;margin-bottom:16px;background:linear-gradient(90deg,#FFE082,#FFCA28);display:inline-block;padding:8px 30px;border-radius:30px;color:#E65100!important;font-weight:800}
+.story-para{background:#FFF8E1;border-left:5px solid #FFC107;padding:14px 18px;border-radius:14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.story-para p{font-size:1.2rem;line-height:1.9;flex:1;min-width:250px;font-weight:600}
+.mini-play{background:#FFC107;color:#333;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;flex-shrink:0}
+.read-all-btn{background:linear-gradient(135deg,#FF9800,#F57C00);color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:1.1rem;font-weight:bold;cursor:pointer;margin-bottom:18px;box-shadow:0 4px 10px rgba(255,152,0,.4);font-family:'Inter', sans-serif;display:block;margin-left:auto;margin-right:auto;}
+
+.activity-block{background:#E8F5E9;border:2px solid #A5D6A7;border-radius:18px;padding:20px;margin-bottom:22px;width:100%}
+.activity-heading{color:#2E7D32;font-size:1.25rem;margin-bottom:14px;font-weight:800;}
+.fillbox{border:2px solid #90A4AE;border-radius:10px;padding:6px 10px;font-size:1.1rem;font-family:'Inter', sans-serif;font-weight:700;color:#00838F;min-width:130px;text-align:center;background:#fff}
+.check-btn{background:var(--primary);color:#fff;border:none;padding:8px 22px;border-radius:20px;font-weight:bold;cursor:pointer;margin-top:8px;font-family:'Inter', sans-serif;font-size:1.1rem}
+.result-msg{font-weight:bold;margin-top:8px;font-size:1.1rem}
+.model-answer-box{background:#FFF3E0;border:2px solid #FFCC80;border-radius:14px;padding:14px 18px;margin-top:10px;font-size:1.1rem;line-height:1.9;display:none;font-weight:600; color:#E65100}
+.reveal-model-btn{background:var(--secondary);color:#fff;border:none;padding:8px 20px;border-radius:18px;font-size:1rem;cursor:pointer;margin-top:6px;font-weight:bold;font-family:'Inter', sans-serif}
+.write-box{width:100%;min-height:100px;border:2px dashed #90A4AE;border-radius:12px;padding:10px 14px;font-size:1.1rem;font-family:'Inter', sans-serif;margin-bottom:10px;resize:vertical;font-weight:600}
+
+/* Games Specific Styles */
+.game-box{background:rgba(255,255,255,.95);border-radius:25px;padding:25px;box-shadow:var(--shadow);width:100%;max-width:750px;margin:0 auto;display:flex;flex-direction:column;align-items:center;border:4px solid #fff}
+.game-instruction{font-size:1.2rem;color:#37474F;margin-bottom:20px;text-align:center;background:#E1F5FE;padding:8px 20px;border-radius:20px;font-weight:bold;font-family:'Inter', sans-serif}
+.options-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;width:100%;max-width:580px}
+.option-btn{background:#fff;border:3px solid #80DEEA;padding:14px;border-radius:18px;font-size:1.2rem;font-weight:bold;color:#00838F!important;cursor:pointer;box-shadow:0 4px 0 #4DD0E1;font-family:'Inter', sans-serif;text-align:center;}
+.option-btn:hover{background:#E1F5FE}
+.option-btn.correct{background:#C8E6C9!important;border-color:#4CAF50!important;color:#2E7D32!important;box-shadow:0 4px 0 #388E3C!important}
+.option-btn.wrong{background:#FFCDD2!important;border-color:#F44336!important;color:#C62828!important;box-shadow:0 4px 0 #D32F2F!important}
+
+/* Match Game Styles */
+.match-container{display:flex;justify-content:space-between;width:100%;gap:18px;margin-bottom:18px; max-width:650px;}
+.match-column{display:flex;flex-direction:column;gap:14px;flex:1}
+.match-item{background:#fff;border:3px solid #CFD8DC;border-radius:15px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:70px;cursor:pointer; font-size:1.15rem; font-weight:bold; color:#37474F; text-align:center; font-family:'Inter', sans-serif;}
+.match-item:hover{border-color:var(--primary);background:#E1F5FE}
+.match-item.selected{border-color:var(--accent);background:#FFF8E1}
+.match-item.matched{border-color:#4CAF50;background:#E8F5E9;opacity:.6;pointer-events:none}
+.match-item.wrong{border-color:#F44336!important;background:#FFCDD2!important}
+
+/* True/False Game Styles */
+.tf-statement {font-size: 1.4rem; font-weight: 800; color: #00838F; background: #E1F5FE; padding: 20px 30px; border-radius: 20px; margin-bottom: 25px; border: 2px dashed #00BCD4; text-align: center; font-family:'Inter', sans-serif;}
+.tf-options {display:flex; gap:20px; width:100%; justify-content:center; max-width:400px;}
+.tf-btn {flex:1; padding:15px; border-radius:18px; font-size:1.3rem; font-weight:bold; cursor:pointer; font-family:'Inter', sans-serif; text-align:center; border:none; color:#fff; box-shadow:0 6px 0 rgba(0,0,0,0.2);}
+.tf-btn.true-btn { background:linear-gradient(135deg,#4CAF50,#388E3C); }
+.tf-btn.false-btn { background:linear-gradient(135deg,#F44336,#D32F2F); }
+.tf-btn:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.2); }
+
+.quiz-q{background:#fff;border-radius:16px;padding:16px 20px;margin-bottom:16px;box-shadow:0 3px 10px rgba(0,0,0,.08);border-left:5px solid var(--primary)}
+.quiz-q .qtext{font-size:1.2rem;margin-bottom:12px;font-weight:bold}
+.quiz-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.quiz-opt{background:#F5F5F5;border:2px solid #E0E0E0;border-radius:12px;padding:10px;cursor:pointer;text-align:center;font-size:1.1rem;font-weight:600}
+.quiz-opt.picked{border-color:var(--primary);background:#E1F5FE}
+.quiz-opt.correct-ans{border-color:#4CAF50;background:#C8E6C9}
+.quiz-opt.wrong-ans{border-color:#F44336;background:#FFCDD2}
+.submit-quiz-btn{background:linear-gradient(135deg,#00BCD4,#00838F);color:#fff;border:none;padding:14px 40px;border-radius:25px;font-size:1.2rem;font-weight:bold;cursor:pointer;margin-top:10px;box-shadow:0 4px 10px rgba(0,188,212,.4);font-family:'Inter', sans-serif}
+.quiz-score-box{background:#FFF9C4;border:2px solid #FBC02D;border-radius:18px;padding:18px;text-align:center;font-size:1.3rem;font-weight:bold;margin-bottom:18px}
+
+.timeline-container { position: relative; margin: 20px 0; padding-left: 30px; border-left: 4px solid var(--primary); }
+.timeline-item { position: relative; margin-bottom: 25px; background: #E1F5FE; padding: 15px 20px; border-radius: 12px; border: 2px solid #80DEEA; }
+.timeline-item::before { content: ''; position: absolute; left: -38px; top: 20px; width: 16px; height: 16px; background: #FF9800; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.tl-year { font-size: 1.4rem; font-weight: 900; color: #E65100; margin-bottom: 5px; }
+.tl-event { font-size: 1.15rem; font-weight: 600; color: #006064; }
+
+.modal-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.7);z-index:100;display:none;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.active{display:flex}
+.reward-card{background:#fff;border-radius:30px;padding:30px;text-align:center;max-width:480px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,.3);border:5px solid #FFD54F}
+.reward-icon{font-size:3.6rem;margin-bottom:10px}
+.reward-title{color:#00838F;font-size:2rem;margin-bottom:8px;font-weight:800}
+.reward-subtitle{color:#E65100;font-size:1.2rem;margin-bottom:18px;font-weight:600}
+.primary-action-btn{background:linear-gradient(135deg,#00BCD4,#00838F);color:#fff;border:none;padding:12px 28px;border-radius:25px;font-size:1.1rem;font-weight:bold;cursor:pointer;font-family:'Inter', sans-serif}
+
+.unit-qp-paper{background:#fff;border:2px solid #333;border-radius:8px;padding:28px 32px;font-family:'Inter', sans-serif;color:#111;line-height:1.6; text-align: left;}
+.unit-qp-paper .qp-school{text-align:center;font-size:1.15rem;font-weight:bold;margin-bottom:4px}
+.unit-qp-paper .qp-title{text-align:center;font-size:1.45rem;font-weight:bold;margin:8px 0 4px;text-decoration:underline}
+.unit-qp-paper .qp-meta{display:flex;justify-content:space-between;flex-wrap:wrap;font-size:1.05rem;margin:12px 0 18px;border-bottom:2px solid #333;padding-bottom:10px;font-weight:600}
+.unit-qp-paper .qp-act{margin-bottom:22px}
+.unit-qp-paper .qp-act-h{font-weight:bold;font-size:1.15rem;margin-bottom:8px;border-left:4px solid #00838F;padding-left:10px}
+.unit-qp-paper .qp-act p,.unit-qp-paper .qp-act li{font-size:1.1rem;margin-bottom:6px;font-weight:600}
+.unit-qp-paper .qp-lines{border-bottom:1px dotted #999;height:24px;margin:6px 0}
+.unit-qp-paper .qp-footer{text-align:center;margin-top:24px;font-size:1rem;border-top:1px solid #999;padding-top:10px;font-weight:600}
+
+.profile-card {background:#fff; border: 2px solid #E0E0E0; border-radius:15px; padding:15px; display:flex; align-items:center; gap:15px; margin-bottom:15px;}
+.profile-img {font-size: 3rem; background: #E1F5FE; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;}
+
+@media print{
+header,.progress-container,.section-header,.controls,.btn-menu,.home-card .menu-grid,.listen-btn-big,.reveal-model-btn,.reveal-btn,.check-btn,.submit-quiz-btn,.replay-btn,.mini-play,.read-all-btn,.no-print{display:none!important}
+body{background:#fff!important}
+.content-box{box-shadow:none;border:none;max-width:100%!important;padding:0!important}
+.model-answer-box{display:block!important}
+.unit-qp-paper{border:none;padding:0;box-shadow:none}
+#unitQPScreen.screen{display:flex!important}
+#unitQPScreen .section-header{display:none!important}
+}
+@media (max-width:600px){.main-title{font-size:1.6rem}.sub-title{font-size:1.1rem}.options-grid{grid-template-columns:1fr}.quiz-opts{grid-template-columns:1fr}.match-container{flex-direction:column; gap:10px;}}
+.story-para p,.option-btn,.match-item,.qtext,.tf-statement{overflow-wrap:anywhere;word-break:break-word}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+<div class="logo-area" onclick="showScreen('homeScreen')">
+    <div style="font-size:1.8rem">🇮🇳</div>
+    <div>
+        <h1>India My Country</h1>
+        <span>STD 4 · EVS · UNIT 2</span>
+        <div class="sub ml">Class 4 • Environmental Science</div>
+    </div>
+</div>
+<div class="stats-bar">
+    <div class="stat-item">⭐ <span id="valScore">0</span></div>
+    <div class="stat-item">❤️ <span id="valLives">5</span></div>
+    <div class="stat-item">🏆 <span id="valStars">0</span></div>
+</div>
+<div class="controls">
+    <button class="icon-btn" id="btnAudioToggle" onclick="toggleAudio()" title="Sound">🔊</button>
+    <button class="icon-btn" onclick="printPage()" title="Print">🖨️</button>
+    <button class="icon-btn" onclick="downloadPage()" title="Download">⬇️</button>
+    <button class="icon-btn" onclick="toggleFullscreen()" title="Full Screen">⛶</button>
+    <button class="icon-btn" onclick="showScreen('homeScreen')" title="Home">🏠</button>
+</div>
+</header>
+<div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+
+<div id="homeScreen" class="screen active">
+<div class="home-card">
+<h1 class="main-title">🇮🇳 India My Country</h1>
+<h2 class="sub-title">Unit 2 : Environmental Science</h2>
+<div class="quote-box">"The freedom we enjoy today is the result of the selfless struggle and sacrifice of many."</div>
+<div class="menu-grid">
+    <button class="btn-menu b1" onclick="openChoose('read')">📖 Read Lessons</button>
+    <button class="btn-menu b6" onclick="openChoose('activities')">📝 Activities</button>
+    <button class="btn-menu b13" onclick="openChoose('leaders')">👤 National Leaders</button>
+    <button class="btn-menu b5" onclick="openChoose('timeline')">⏳ Timeline</button>
+    <button class="btn-menu b3" onclick="openGamesMenu()">🎮 Games</button>
+    <button class="btn-menu b4" onclick="openChoose('quiz')">❓ Quiz</button>
+    <button class="btn-menu b10" onclick="showScreen('modelQPScreen'); renderModelQP();">📋 Model Question Paper</button>
+    <button class="btn-menu b18" onclick="showScreen('unitQPScreen'); renderUnitQP();">📄 Unit Test</button>
+</div>
+</div>
+</div>
+
+<div id="chooseScreen" class="screen">
+<div class="section-header"><div class="section-title" id="chooseTitle">Choose Section</div><button class="back-btn" onclick="showScreen('homeScreen')">Back</button></div>
+<div class="content-box"><div class="choose-wrap" id="chooseList"></div></div>
+</div>
+
+<div id="contentScreen" class="screen">
+<div class="section-header"><div class="section-title" id="contentTitle">Content</div><button class="back-btn" id="contentBackBtn" onclick="goBackFromContent()">Back</button></div>
+<div class="content-box" id="contentBody"></div>
+</div>
+
+<div id="gamesMenuScreen" class="screen">
+<div class="section-header"><div class="section-title">🎮 Games</div><button class="back-btn" onclick="showScreen('homeScreen')">Back</button></div>
+<div class="menu-grid" style="max-width:720px;margin:10px auto">
+    <button class="btn-menu b1" onclick="launchGame(1)">🎯 Find the Correct Answer</button>
+    <button class="btn-menu b6" onclick="launchGame(2)">🔗 Match the Following</button>
+    <button class="btn-menu b2" onclick="launchGame(3)">✅ True or False?</button>
+</div>
+</div>
+
+<div id="game1Screen" class="screen">
+<div class="game-box">
+<div class="game-instruction">🎮 Choose the correct answer!</div>
+<div class="tf-statement" id="g1Question" style="font-size:1.2rem; margin-bottom:15px; background:none; border:none; color:#333;"></div>
+<div class="options-grid" id="g1OptionsGrid"></div>
+</div>
+</div>
+
+<div id="game2Screen" class="screen">
+<div class="game-box">
+<div class="game-instruction">🔗 Match correctly!</div>
+<div class="match-container">
+    <div class="match-column" id="g2LeftCol"></div>
+    <div class="match-column" id="g2RightCol"></div>
+</div>
+</div>
+</div>
+
+<div id="game3Screen" class="screen">
+<div class="game-box">
+<div class="game-instruction">✅ Find if True or False!</div>
+<div class="tf-statement" id="g3StatementBox"></div>
+<div class="tf-options">
+    <button class="tf-btn true-btn" onclick="checkTF(true)">✅ True</button>
+    <button class="tf-btn false-btn" onclick="checkTF(false)">❌ False</button>
+</div>
+</div>
+</div>
+
+<div id="modelQPScreen" class="screen">
+    <div class="section-header"><div class="section-title">📋 Model Question Paper</div><button class="back-btn" onclick="showScreen('homeScreen')">Back</button></div>
+    <div class="content-box" id="modelQPContainer" style="text-align: left;"></div>
+</div>
+
+<div id="unitQPScreen" class="screen">
+    <div class="section-header"><div class="section-title">📄 Unit Test</div><button class="back-btn" onclick="showScreen('homeScreen')">Back</button></div>
+    <div class="content-box" style="max-width:900px">
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px" class="no-print">
+            <button class="btn-menu b1" style="padding:10px 22px;box-shadow:0 4px 0 rgba(0,0,0,.2)" onclick="printPage()">🖨️ Print</button>
+            <button class="btn-menu b3" style="padding:10px 22px;box-shadow:0 4px 0 rgba(0,0,0,.2)" onclick="downloadUnitQPasPDF()">⬇️ Download PDF</button>
+        </div>
+        <div id="unitQPPaper" class="unit-qp-paper"></div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="rewardModal">
+    <div class="reward-card">
+        <div class="reward-icon">🏅</div>
+        <h2 class="reward-title">Excellent!</h2>
+        <p class="reward-subtitle">You have successfully completed this activity!</p>
+        <button class="primary-action-btn" onclick="closeRewardModal()">Continue</button>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Application State
+let state = {
+    score: 0,
+    lives: 5,
+    stars: 0,
+    audioEnabled: true,
+    currentScreen: 'homeScreen',
+    lastChooseScreen: ''
+};
+
+// Update Top Bar Stats
+function updateStats() {
+    document.getElementById('valScore').innerText = state.score;
+    document.getElementById('valLives').innerText = state.lives;
+    document.getElementById('valStars').innerText = state.stars;
+}
+
+// Show specific screen
+function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+    state.currentScreen = screenId;
+    window.scrollTo(0,0);
+}
+
+// Audio Toggle
+function toggleAudio() {
+    state.audioEnabled = !state.audioEnabled;
+    document.getElementById('btnAudioToggle').innerText = state.audioEnabled ? '🔊' : '🔇';
+}
+
+// Text to Speech Function using Web Speech API
+function speakText(text) {
+    if (!state.audioEnabled) return;
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // stop current
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-IN'; // Indian English
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
+// Print & Download
+function printPage() {
+    window.print();
+}
+
+function downloadPage() {
+    alert("Click on Print and select 'Save as PDF' to download the current view.");
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.log(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+function goBackFromContent() {
+    showScreen('chooseScreen');
+}
+
+function showReward() {
+    document.getElementById('rewardModal').classList.add('active');
+    state.score += 50;
+    state.stars += 1;
+    updateStats();
+}
+
+function closeRewardModal() {
+    document.getElementById('rewardModal').classList.remove('active');
+    showScreen('homeScreen');
+}
+
+const dataStore = {
+    read: [
+        {
+            title: "1. The Spice Route",
+            emoji: "🚢",
+            desc: "Foreigners arriving in India",
+            content: `
+                <div class="story-title-wrap"><h3 class="story-title">Foreigners Arrive for Trade</h3></div>
+                <button class="read-all-btn no-print" onclick="speakText('Long ago, foreigners came to India in ships to buy spices like cardamom, pepper, and textiles like silk and cotton. They came from Portugal, Holland, France, and England.')">🔊 Read Aloud</button>
+                <div class="story-para">
+                    <p>Long ago, foreigners came to India in ships to buy spices like cardamom, pepper, and textiles like silk and cotton.</p>
+                    <button class="mini-play no-print" onclick="speakText('Long ago, foreigners came to India in ships to buy spices like cardamom, pepper, and textiles like silk and cotton.')">▶</button>
+                </div>
+                <div class="story-para">
+                    <p>They came from countries like Portugal, Holland, France, and England.</p>
+                    <button class="mini-play no-print" onclick="speakText('They came from countries like Portugal, Holland, France, and England.')">▶</button>
+                </div>
+            `
+        },
+        {
+            title: "2. The British Rule",
+            emoji: "👑",
+            desc: "East India Company",
+            content: `
+                <div class="story-title-wrap"><h3 class="story-title">British East India Company</h3></div>
+                <button class="read-all-btn no-print" onclick="speakText('The British East India Company came to India for trade but slowly took control of our country. They ruled India for nearly 200 years. The people of India suffered a lot under their cruel rule.')">🔊 Read Aloud</button>
+                <div class="story-para">
+                    <p>The British East India Company came to India for trade but slowly took control of our country.</p>
+                    <button class="mini-play no-print" onclick="speakText('The British East India Company came to India for trade but slowly took control of our country.')">▶</button>
+                </div>
+                <div class="story-para">
+                    <p>They ruled India for nearly 200 years. The people of India suffered a lot under their cruel rule.</p>
+                    <button class="mini-play no-print" onclick="speakText('They ruled India for nearly 200 years. The people of India suffered a lot under their cruel rule.')">▶</button>
+                </div>
+            `
+        },
+        {
+            title: "3. Freedom Struggle",
+            emoji: "✊",
+            desc: "Fight for Independence",
+            content: `
+                <div class="story-title-wrap"><h3 class="story-title">The Struggle for Freedom</h3></div>
+                <button class="read-all-btn no-print" onclick="speakText('Indians united to fight against British rule. Mahatma Gandhi led the freedom struggle using weapons of truth and non-violence. Many brave leaders sacrificed their lives for the nation.')">🔊 Read Aloud</button>
+                <div class="story-para">
+                    <p>Indians united to fight against British rule. Mahatma Gandhi led the freedom struggle using weapons of truth and non-violence.</p>
+                    <button class="mini-play no-print" onclick="speakText('Indians united to fight against British rule. Mahatma Gandhi led the freedom struggle using weapons of truth and non-violence.')">▶</button>
+                </div>
+                <div class="story-para">
+                    <p>Many brave leaders sacrificed their lives for the nation's freedom.</p>
+                    <button class="mini-play no-print" onclick="speakText('Many brave leaders sacrificed their lives for the nation\\'s freedom.')">▶</button>
+                </div>
+            `
+        },
+        {
+            title: "4. Independence",
+            emoji: "🇮🇳",
+            desc: "August 15, 1947",
+            content: `
+                <div class="story-title-wrap"><h3 class="story-title">India Wins Freedom</h3></div>
+                <button class="read-all-btn no-print" onclick="speakText('Finally, on August 15, 1947, India won its independence from the British. Every year we celebrate Independence Day on August 15. We hoist the national flag and sing the national anthem.')">🔊 Read Aloud</button>
+                <div class="story-para">
+                    <p>Finally, on August 15, 1947, India won its independence from the British.</p>
+                    <button class="mini-play no-print" onclick="speakText('Finally, on August 15, 1947, India won its independence from the British.')">▶</button>
+                </div>
+                <div class="story-para">
+                    <p>Every year we celebrate Independence Day on August 15. We hoist the national flag and sing the national anthem.</p>
+                    <button class="mini-play no-print" onclick="speakText('Every year we celebrate Independence Day on August 15. We hoist the national flag and sing the national anthem.')">▶</button>
+                </div>
+            `
+        }
+    ],
+    activities: [
+        {
+            title: "Fill in the Blanks",
+            emoji: "✍️",
+            desc: "Test your memory",
+            content: `
+                <div class="activity-block">
+                    <h3 class="activity-heading">Fill in the blanks with correct words:</h3>
+                    <p style="font-size:1.1rem; margin-bottom:10px;">1. India got independence on <input type="text" class="fillbox" id="fill1"> 1947.</p>
+                    <p style="font-size:1.1rem; margin-bottom:10px;">2. Foreigners came to buy <input type="text" class="fillbox" id="fill2"> like pepper.</p>
+                    <p style="font-size:1.1rem; margin-bottom:10px;">3. The British ruled India for <input type="text" class="fillbox" id="fill3"> years.</p>
+                    <button class="check-btn" onclick="checkFillBlanks()">Check Answers</button>
+                    <div id="fillRes" class="result-msg"></div>
+                </div>
+            `
+        },
+        {
+            title: "Short Note",
+            emoji: "📝",
+            desc: "Write your thoughts",
+            content: `
+                <div class="activity-block">
+                    <h3 class="activity-heading">Prepare a note on India's freedom struggle in your own words.</h3>
+                    <button class="mini-play no-print" style="margin-bottom:10px;" onclick="speakText('Prepare a note on India\\'s freedom struggle in your own words.')">🔊 Listen</button>
+                    <textarea class="write-box" placeholder="Write your answer here..."></textarea>
+                    <button class="reveal-model-btn no-print" onclick="document.getElementById('modelAns1').style.display='block'">Show Model Answer</button>
+                    <div class="model-answer-box" id="modelAns1">
+                        <strong>Model Answer:</strong><br>
+                        The British came to India for trade but ruled us for nearly 200 years. Indians suffered a lot. Under the leadership of Mahatma Gandhi and other great leaders, Indians fought for freedom using truth and non-violence. Many sacrificed their lives. Finally, India got independence on August 15, 1947.
+                    </div>
+                </div>
+            `
+        }
+    ],
+    leaders: [
+        {
+            title: "Mahatma Gandhi",
+            emoji: "👓",
+            desc: "Father of the Nation",
+            content: `
+                <div class="profile-card">
+                    <div class="profile-img">👓</div>
+                    <div>
+                        <h3 style="color:var(--primary); font-size:1.4rem;">Mahatma Gandhi</h3>
+                        <p style="font-size:1.1rem; font-weight:600;">Known as the Father of the Nation. He led the freedom struggle with truth and non-violence (Ahimsa).</p>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Jawaharlal Nehru",
+            emoji: "🌹",
+            desc: "First Prime Minister",
+            content: `
+                <div class="profile-card">
+                    <div class="profile-img">🌹</div>
+                    <div>
+                        <h3 style="color:var(--primary); font-size:1.4rem;">Jawaharlal Nehru</h3>
+                        <p style="font-size:1.1rem; font-weight:600;">The first Prime Minister of independent India. Children lovingly called him Chacha Nehru.</p>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Subhas Chandra Bose",
+            emoji: "🎖️",
+            desc: "Netaji",
+            content: `
+                <div class="profile-card">
+                    <div class="profile-img">🎖️</div>
+                    <div>
+                        <h3 style="color:var(--primary); font-size:1.4rem;">Subhas Chandra Bose</h3>
+                        <p style="font-size:1.1rem; font-weight:600;">Popularly known as Netaji. He formed the Indian National Army (INA) to fight against the British.</p>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Bhagat Singh",
+            emoji: "🔥",
+            desc: "Brave Martyr",
+            content: `
+                <div class="profile-card">
+                    <div class="profile-img">🔥</div>
+                    <div>
+                        <h3 style="color:var(--primary); font-size:1.4rem;">Bhagat Singh</h3>
+                        <p style="font-size:1.1rem; font-weight:600;">A brave young freedom fighter who sacrificed his life for the country with a smile.</p>
+                    </div>
+                </div>
+            `
+        }
+    ],
+    timeline: [
+        {
+            title: "Historical Timeline",
+            emoji: "⏳",
+            desc: "Important Events",
+            content: `
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="tl-year">1498</div>
+                        <div class="tl-event">Vasco da Gama reached Calicut (Foreigners arrive)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-year">1857</div>
+                        <div class="tl-event">First War of Indian Independence</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-year">1942</div>
+                        <div class="tl-event">Quit India Movement launched by Gandhiji</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-year">1947</div>
+                        <div class="tl-event">August 15: India wins Independence! 🇮🇳</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="tl-year">1950</div>
+                        <div class="tl-event">January 26: India becomes a Republic</div>
+                    </div>
+                </div>
+            `
+        }
+    ],
+    quiz: [
+        {
+            title: "Chapter Quiz",
+            emoji: "❓",
+            desc: "Test your knowledge",
+            content: `
+                <div id="quizContainer"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz()">Submit Quiz</button>
+                <div id="quizRes" class="quiz-score-box" style="display:none; margin-top:15px;"></div>
+            `
+        }
+    ]
+};
+
+const quizQuestions = [
+    { q: "Who is known as the Father of the Nation?", opts: ["Jawaharlal Nehru", "Mahatma Gandhi", "Bhagat Singh", "Subhas Chandra Bose"], ans: 1 },
+    { q: "When do we celebrate Independence Day?", opts: ["January 26", "October 2", "August 15", "November 14"], ans: 2 },
+    { q: "Why did foreigners initially come to India?", opts: ["For Trade (Spices)", "To Rule", "For Tourism", "To Study"], ans: 0 },
+    { q: "Who was the first Prime Minister of free India?", opts: ["Mahatma Gandhi", "Dr. B R Ambedkar", "Sardar Patel", "Jawaharlal Nehru"], ans: 3 }
+];
+
+function openChoose(type) {
+    state.lastChooseScreen = type;
+    const listDiv = document.getElementById('chooseList');
+    listDiv.innerHTML = '';
+    
+    let titleMap = {
+        'read': '📖 Read Lessons',
+        'activities': '📝 Activities',
+        'leaders': '👤 National Leaders',
+        'timeline': '⏳ Timeline',
+        'quiz': '❓ Quiz'
+    };
+    document.getElementById('chooseTitle').innerText = titleMap[type];
+
+    dataStore[type].forEach((item, index) => {
+        let div = document.createElement('div');
+        div.className = 'lesson-pick';
+        div.innerHTML = `
+            <div class="lp-emoji">${item.emoji}</div>
+            <div>
+                <div class="lp-title">${item.title}</div>
+                <div class="lp-sub">${item.desc}</div>
+            </div>
+        `;
+        div.onclick = () => openContent(type, index);
+        listDiv.appendChild(div);
+    });
+    
+    showScreen('chooseScreen');
+}
+
+function openContent(type, index) {
+    const item = dataStore[type][index];
+    document.getElementById('contentTitle').innerText = item.title;
+    document.getElementById('contentBody').innerHTML = item.content;
+    
+    if(type === 'quiz') renderQuiz();
+    
+    showScreen('contentScreen');
+}
+
+function checkFillBlanks() {
+    let f1 = document.getElementById('fill1').value.trim().toLowerCase();
+    let f2 = document.getElementById('fill2').value.trim().toLowerCase();
+    let f3 = document.getElementById('fill3').value.trim().toLowerCase();
+    
+    let correct = 0;
+    if(f1 === 'august 15' || f1 === 'august' || f1 === '15 august') correct++;
+    if(f2.includes('spice')) correct++;
+    if(f3 === '200' || f3 === 'two hundred') correct++;
+    
+    let res = document.getElementById('fillRes');
+    if(correct === 3) {
+        res.innerHTML = "✅ Excellent! All correct.";
+        res.style.color = "green";
+        showReward();
+    } else {
+        res.innerHTML = `⚠️ You got ${correct}/3 correct. Try again! (Hint: August 15, spices, 200)`;
+        res.style.color = "orange";
+    }
+}
+
+let selectedAnswers = {};
+function renderQuiz() {
+    selectedAnswers = {};
+    const qCont = document.getElementById('quizContainer');
+    qCont.innerHTML = '';
+    quizQuestions.forEach((qObj, qIdx) => {
+        let qDiv = document.createElement('div');
+        qDiv.className = 'quiz-q';
+        let optsHtml = qObj.opts.map((opt, oIdx) => 
+            `<div class="quiz-opt" id="opt_${qIdx}_${oIdx}" onclick="selectQuizOpt(${qIdx}, ${oIdx})">${opt}</div>`
+        ).join('');
+        
+        qDiv.innerHTML = `
+            <div class="qtext">${qIdx + 1}. ${qObj.q}</div>
+            <div class="quiz-opts">${optsHtml}</div>
+        `;
+        qCont.appendChild(qDiv);
+    });
+}
+
+function selectQuizOpt(qIdx, oIdx) {
+    // Reset visual for this question
+    for(let i=0; i<4; i++) {
+        let el = document.getElementById(`opt_${qIdx}_${i}`);
+        if(el) el.classList.remove('picked');
+    }
+    // Select new
+    document.getElementById(`opt_${qIdx}_${oIdx}`).classList.add('picked');
+    selectedAnswers[qIdx] = oIdx;
+}
+
+function submitQuiz() {
+    let score = 0;
+    quizQuestions.forEach((qObj, qIdx) => {
+        let userAns = selectedAnswers[qIdx];
+        if(userAns !== undefined) {
+            let selectedEl = document.getElementById(`opt_${qIdx}_${userAns}`);
+            if(userAns === qObj.ans) {
+                score++;
+                selectedEl.classList.add('correct-ans');
+                selectedEl.classList.remove('picked');
+            } else {
+                selectedEl.classList.add('wrong-ans');
+                document.getElementById(`opt_${qIdx}_${qObj.ans}`).classList.add('correct-ans');
+            }
+        } else {
+            document.getElementById(`opt_${qIdx}_${qObj.ans}`).classList.add('correct-ans');
+        }
+    });
+    
+    let res = document.getElementById('quizRes');
+    res.style.display = 'block';
+    res.innerHTML = `You scored ${score} out of ${quizQuestions.length}!`;
+    
+    if(score === quizQuestions.length) {
+        setTimeout(showReward, 1000);
+    }
+}
+
+function openGamesMenu() {
+    showScreen('gamesMenuScreen');
+}
+
+// GAME 1: Find Correct Answer
+const g1Data = [
+    {q: "Foreigners came to India to buy...", opts: ["Spices", "Books", "Cars", "Toys"], ans: 0},
+    {q: "The British ruled India for nearly...", opts: ["50 years", "100 years", "200 years", "10 years"], ans: 2},
+    {q: "India gained independence in the year...", opts: ["1947", "1950", "1857", "2000"], ans: 0}
+];
+let currentG1 = 0;
+
+function launchGame(id) {
+    if(id === 1) { currentG1 = 0; renderG1(); showScreen('game1Screen'); }
+    if(id === 2) { initMatchGame(); showScreen('game2Screen'); }
+    if(id === 3) { currentG3 = 0; renderG3(); showScreen('game3Screen'); }
+}
+
+function renderG1() {
+    if(currentG1 >= g1Data.length) { showReward(); return; }
+    let obj = g1Data[currentG1];
+    document.getElementById('g1Question').innerText = obj.q;
+    let grid = document.getElementById('g1OptionsGrid');
+    grid.innerHTML = '';
+    obj.opts.forEach((opt, idx) => {
+        let btn = document.createElement('div');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => checkG1Ans(btn, idx, obj.ans);
+        grid.appendChild(btn);
+    });
+}
+
+function checkG1Ans(btn, idx, correctIdx) {
+    if(idx === correctIdx) {
+        btn.classList.add('correct');
+        speakText("Correct!");
+        setTimeout(() => { currentG1++; renderG1(); }, 1000);
+    } else {
+        btn.classList.add('wrong');
+        speakText("Wrong, try again.");
+        state.lives = Math.max(0, state.lives - 1);
+        updateStats();
+        setTimeout(() => btn.classList.remove('wrong'), 800);
+    }
+}
+
+// GAME 2: Match the Following
+const matchPairs = [
+    {L: "Mahatma Gandhi", R: "Father of the Nation", id: 1},
+    {L: "August 15", R: "Independence Day", id: 2},
+    {L: "British", R: "Ruled for 200 years", id: 3},
+    {L: "Spices", R: "Foreign Trade", id: 4}
+];
+let selectedLeft = null;
+
+function initMatchGame() {
+    let leftCol = document.getElementById('g2LeftCol');
+    let rightCol = document.getElementById('g2RightCol');
+    leftCol.innerHTML = ''; rightCol.innerHTML = '';
+    
+    // Shuffle logic
+    let leftItems = [...matchPairs].sort(() => Math.random() - 0.5);
+    let rightItems = [...matchPairs].sort(() => Math.random() - 0.5);
+    
+    leftItems.forEach(item => {
+        let div = document.createElement('div');
+        div.className = 'match-item';
+        div.innerText = item.L;
+        div.dataset.id = item.id;
+        div.onclick = () => selectMatch('left', div);
+        leftCol.appendChild(div);
+    });
+    
+    rightItems.forEach(item => {
+        let div = document.createElement('div');
+        div.className = 'match-item right-item';
+        div.innerText = item.R;
+        div.dataset.id = item.id;
+        div.onclick = () => selectMatch('right', div);
+        rightCol.appendChild(div);
+    });
+}
+
+function selectMatch(side, el) {
+    if(el.classList.contains('matched')) return;
+    
+    if(side === 'left') {
+        document.querySelectorAll('#g2LeftCol .match-item').forEach(e => e.classList.remove('selected'));
+        el.classList.add('selected');
+        selectedLeft = el;
+    } else {
+        if(!selectedLeft) return;
+        
+        if(selectedLeft.dataset.id === el.dataset.id) {
+            // Match success
+            selectedLeft.classList.add('matched');
+            selectedLeft.classList.remove('selected');
+            el.classList.add('matched');
+            speakText("Matched!");
+            selectedLeft = null;
+            checkMatchWin();
+        } else {
+            // Match failed
+            el.classList.add('wrong');
+            speakText("Incorrect match");
+            state.lives = Math.max(0, state.lives - 1);
+            updateStats();
+            setTimeout(() => el.classList.remove('wrong'), 600);
+        }
+    }
+}
+
+function checkMatchWin() {
+    let matchedCount = document.querySelectorAll('#g2LeftCol .matched').length;
+    if(matchedCount === matchPairs.length) {
+        setTimeout(showReward, 800);
+    }
+}
+
+// GAME 3: True or False
+const g3Data = [
+    {q: "The British ruled India for nearly 200 years.", ans: true},
+    {q: "India got its independence in the year 1950.", ans: false}, // 1947
+    {q: "Mahatma Gandhi is known as the Father of the Nation.", ans: true},
+    {q: "Foreigners came to India to buy computers.", ans: false} // spices
+];
+let currentG3 = 0;
+
+function renderG3() {
+    if(currentG3 >= g3Data.length) { showReward(); return; }
+    document.getElementById('g3StatementBox').innerText = g3Data[currentG3].q;
+}
+
+function checkTF(val) {
+    if(val === g3Data[currentG3].ans) {
+        speakText("Correct!");
+        currentG3++;
+        setTimeout(renderG3, 800);
+    } else {
+        speakText("Wrong!");
+        state.lives = Math.max(0, state.lives - 1);
+        updateStats();
+        let box = document.getElementById('g3StatementBox');
+        box.style.background = "#FFCDD2";
+        box.style.borderColor = "#F44336";
+        setTimeout(() => {
+            box.style.background = "#E1F5FE";
+            box.style.borderColor = "#00BCD4";
+        }, 800);
+    }
+}
+
+function renderModelQP() {
+    let qp = document.getElementById('modelQPContainer');
+    qp.innerHTML = `
+        <div class="unit-qp-paper">
+            <div class="qp-school">Government LP School</div>
+            <div class="qp-title">MODEL EXAMINATION</div>
+            <div class="qp-meta">
+                <span>Class: 4</span>
+                <span>Subject: EVS</span>
+                <span>Unit: 2 (India My Country)</span>
+            </div>
+            
+            <div class="qp-act">
+                <div class="qp-act-h">Activity 1: Fill in the blanks (3 Marks)</div>
+                <p>a) Foreigners came to India to buy __________.</p>
+                <div class="qp-lines"></div>
+                <p>b) The British ruled India for nearly __________ years.</p>
+                <div class="qp-lines"></div>
+                <p>c) India's Independence Day is celebrated on __________.</p>
+                <div class="qp-lines"></div>
+            </div>
+            
+            <div class="qp-act">
+                <div class="qp-act-h">Activity 2: Match the Following (3 Marks)</div>
+                <table style="width:100%; border-collapse:collapse; text-align:left;">
+                    <tr style="border-bottom:1px solid #ccc;"><th style="padding:5px;">A</th><th style="padding:5px;">B</th></tr>
+                    <tr><td style="padding:5px;">1. Mahatma Gandhi</td><td style="padding:5px;">a. First Prime Minister</td></tr>
+                    <tr><td style="padding:5px;">2. Jawaharlal Nehru</td><td style="padding:5px;">b. 1947</td></tr>
+                    <tr><td style="padding:5px;">3. Independence</td><td style="padding:5px;">c. Father of the Nation</td></tr>
+                </table>
+            </div>
+            
+            <div class="qp-act">
+                <div class="qp-act-h">Activity 3: Write a Short Note (4 Marks)</div>
+                <p>Prepare a short note on India's Freedom Struggle.</p>
+                <div class="qp-lines"></div>
+                <div class="qp-lines"></div>
+                <div class="qp-lines"></div>
+                <div class="qp-lines"></div>
+            </div>
+            
+            <div class="qp-footer">*** All the Best ***</div>
+        </div>
+        <button class="btn-menu b1 no-print" style="margin:20px auto 0; display:block;" onclick="printPage()">🖨️ Print Question Paper</button>
+    `;
+}
+
+function renderUnitQP() {
+    let qp = document.getElementById('unitQPPaper');
+    qp.innerHTML = `
+        <div class="qp-school">Government LP School</div>
+        <div class="qp-title">UNIT TEST 2</div>
+        <div class="qp-meta">
+            <span>Class: 4</span>
+            <span>Subject: EVS</span>
+            <span>Marks: 10</span>
+        </div>
+        
+        <div class="qp-act">
+            <div class="qp-act-h">1. Answer in one word (3 Marks)</div>
+            <p>a) Who is known as the Father of the Nation?</p>
+            <div class="qp-lines"></div>
+            <p>b) Which country ruled India for 200 years?</p>
+            <div class="qp-lines"></div>
+            <p>c) What did foreigners come to buy from India?</p>
+            <div class="qp-lines"></div>
+        </div>
+        
+        <div class="qp-act">
+            <div class="qp-act-h">2. True or False (3 Marks)</div>
+            <p>a) India got independence on January 26. ( _______ )</p>
+            <p>b) Gandhiji followed the path of non-violence. ( _______ )</p>
+            <p>c) Subhas Chandra Bose is known as Netaji. ( _______ )</p>
+        </div>
+        
+        <div class="qp-act">
+            <div class="qp-act-h">3. Write a Short Note (4 Marks)</div>
+            <p>Why do we celebrate August 15?</p>
+            <div class="qp-lines"></div>
+            <div class="qp-lines"></div>
+            <div class="qp-lines"></div>
+            <div class="qp-lines"></div>
+        </div>
+        
+        <div class="qp-footer">*** All the Best ***</div>
+    `;
+}
+
+function downloadUnitQPasPDF() {
+    const element = document.getElementById('unitQPPaper');
+    const opt = {
+      margin:       0.5,
+      filename:     'Unit_Test_India_My_Country.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+}
+
+// Init
+updateStats();
+</script>
+</body>
+</html>
